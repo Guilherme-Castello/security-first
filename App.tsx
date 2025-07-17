@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+import FormCreate from './Screens/FormCreate';
+import FormList from './Screens/FormList';
+import Test from './Screens/Test';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerScreens(){
+    return (
+      <Stack.Navigator initialRouteName="FormCreate">
+        <Stack.Screen 
+          name="FormCreate" 
+          component={FormCreate} 
+          options={{ title: 'From Create' }}
+        />
+        <Stack.Screen 
+          name="FormList" 
+          component={FormList} 
+          options={{ title: 'From List' }}
+        />
+      </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+      <NavigationContainer>
+        <Drawer.Navigator>
+            <Drawer.Screen name="DrawerScreens" component={DrawerScreens}/>
+            <Drawer.Screen name="Test" component={Test}/>
+        </Drawer.Navigator>
+      </NavigationContainer>
+  );
+}
