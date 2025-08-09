@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import FormCreate from './Screens/FormCreate';
 import FormList from './Screens/FormList';
-import Test from './Screens/Test';
+import FormViewer from './Screens/FormViewer';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { PortalProvider } from '@gorhom/portal';
 
@@ -33,8 +33,9 @@ export default function App() {
     <PortalProvider>
       <NavigationContainer>
         <Drawer.Navigator>
-          <Drawer.Screen name="DrawerScreens" component={DrawerScreens} />
-          <Drawer.Screen name="Test" component={Test} />
+          <Drawer.Screen name="Form List" component={FormList} />
+          <Drawer.Screen name="Form Create" component={FormCreate} />
+          <Drawer.Screen name="FormViewer" component={FormViewer}/>
         </Drawer.Navigator>
       </NavigationContainer>
     </PortalProvider>
